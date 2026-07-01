@@ -66,22 +66,18 @@ export default function QuickGameResultScreen() {
           {result.details.map((detail, i) => (
             <div
               key={i}
-              className="correct-answer-card"
-              style={{
-                borderLeft: `4px solid ${detail.isCorrect ? '#10b981' : '#f43f5e'}`,
-                marginBottom: 8,
-              }}
+              className={`correct-answer-card detail-card ${detail.isCorrect ? 'detail-card-correct' : 'detail-card-incorrect'}`}
             >
               <div className="quick-expression" style={{ fontSize: 14, marginBottom: 4 }}>
                 {detail.expression}
               </div>
-              <div style={{ fontSize: 12, color: '#94a3b8', marginBottom: 4 }}>
+              <div className="detail-vars">
                 {Object.entries(detail.variableValues).map(([k, v]) => (
                   <span key={k} style={{ marginRight: 8 }}>{k} = {v}</span>
                 ))}
               </div>
-              <div style={{ fontSize: 13, color: '#cbd5e1' }}>
-                Respuesta: {detail.givenAnswer || '—'} | Correcta: {detail.correctAnswer}
+              <div className="detail-answers">
+                Respuesta: <span className="detail-given">{detail.givenAnswer || '—'}</span> | Correcta: {detail.correctAnswer}
               </div>
             </div>
           ))}

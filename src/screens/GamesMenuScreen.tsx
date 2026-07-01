@@ -35,13 +35,13 @@ export default function GamesMenuScreen() {
           </div>
         )}
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div className="button-group">
           <div className="button standard" onClick={() => handleMode('standard')}>
             <div style={{ flex: 1 }}>
               <div className="button-title">Completar tabla</div>
               <div className="button-desc">Llena la tabla de verdad de la expresión</div>
             </div>
-            <span style={{ color: '#3b82f6', fontSize: 20, fontWeight: 700 }}>&gt;</span>
+            <span className="button-arrow" style={{ color: '#3b82f6' }}>&rarr;</span>
           </div>
 
           <div className="button quick" onClick={() => handleMode('quick')}>
@@ -49,7 +49,7 @@ export default function GamesMenuScreen() {
               <div className="button-title">V o F rápido</div>
               <div className="button-desc">Responde verdadero o falso contra el reloj</div>
             </div>
-            <span style={{ color: '#f59e0b', fontSize: 20, fontWeight: 700 }}>&gt;</span>
+            <span className="button-arrow" style={{ color: '#f59e0b' }}>&rarr;</span>
           </div>
 
           <div className="button expression" onClick={() => handleMode('expression')}>
@@ -57,7 +57,7 @@ export default function GamesMenuScreen() {
               <div className="button-title">Completar expresión</div>
               <div className="button-desc">Elige la expresión correcta para la tabla</div>
             </div>
-            <span style={{ color: '#f43f5e', fontSize: 20, fontWeight: 700 }}>&gt;</span>
+            <span className="button-arrow" style={{ color: '#f43f5e' }}>&rarr;</span>
           </div>
         </div>
       </div>

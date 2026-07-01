@@ -106,11 +106,11 @@ export default function ScenarioDetailScreen() {
 
       <div className="scenario-content">{scenario.description}</div>
 
-      <div style={{ marginBottom: 16 }}>
-        <strong>Variables:</strong>
-        <ul style={{ marginTop: 8, paddingLeft: 20, color: '#94a3b8' }}>
+      <div className="variables-list">
+        <div className="variables-list-title">Variables</div>
+        <ul className="variables-items">
           {scenario.variables.map((v) => (
-            <li key={v.symbol}>
+            <li key={v.symbol} className="variables-item">
               <strong>{v.symbol}</strong>: {v.label}
             </li>
           ))}
@@ -153,12 +153,7 @@ export default function ScenarioDetailScreen() {
 
           {answered && (
             <div
-              className="scenario-feedback"
-              style={{
-                color: isCorrect ? '#34d399' : '#fb7185',
-                marginTop: 16,
-                fontWeight: 700,
-              }}
+              className={`scenario-feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`}
             >
               {isCorrect ? '¡Correcto!' : 'Incorrecto'}
             </div>
@@ -172,24 +167,13 @@ export default function ScenarioDetailScreen() {
         </div>
       )}
 
-      <div style={{ marginTop: 16 }}>
-        <div
-          className="scenario-content"
-          style={{ background: '#1e293b', borderRadius: '0.75rem', padding: 16 }}
-        >
-          <div style={{ fontWeight: 700, marginBottom: 8 }}>Expresión real:</div>
-          <div style={{ fontFamily: 'monospace', fontSize: 16, color: '#fff' }}>
-            {scenario.expression}
-          </div>
-          <div style={{ marginTop: 8, color: '#94a3b8', fontSize: 14 }}>
-            {scenario.explanation}
-          </div>
-          {scenario.extraNote && (
-            <div style={{ marginTop: 8, color: '#f59e0b', fontSize: 14 }}>
-              {scenario.extraNote}
-            </div>
-          )}
-        </div>
+      <div className="expression-real-box">
+        <div className="expression-real-title">Expresión real</div>
+        <div className="expression-real-code">{scenario.expression}</div>
+        <div className="expression-real-desc">{scenario.explanation}</div>
+        {scenario.extraNote && (
+          <div className="expression-real-note">{scenario.extraNote}</div>
+        )}
       </div>
 
       {answered && completed && (

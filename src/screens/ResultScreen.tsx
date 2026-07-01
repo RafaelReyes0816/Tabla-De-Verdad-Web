@@ -82,7 +82,7 @@ export default function ResultScreen() {
           </div>
         )}
 
-        <div className="time-value" style={{ textAlign: 'center', marginBottom: 24 }}>
+        <div className="time-value">
           <div className="time-label">Tiempo</div>
           {formatTime(result.timeMs)}
         </div>
