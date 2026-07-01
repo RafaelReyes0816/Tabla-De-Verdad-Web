@@ -97,7 +97,7 @@ export default function ResultScreen() {
         )}
 
         <div className="button-group">
-          <button className="play-again-btn" onClick={() => navigate(-1)}>
+          <button className="play-again-btn" onClick={() => navigate(`/game?teamName=${encodeURIComponent(teamName)}`)}>
             Jugar de nuevo
           </button>
           <button className="leaderboard-btn" onClick={() => navigate('/leaderboard')}>
