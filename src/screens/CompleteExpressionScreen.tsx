@@ -91,7 +91,7 @@ export default function CompleteExpressionScreen() {
 
       {teamName && <div className="team-name">Equipo: {teamName}</div>}
 
-      <div className="table-wrapper">
+      <div className="truth-table-container">
         <table className="truth-table">
           <thead>
             <tr>
