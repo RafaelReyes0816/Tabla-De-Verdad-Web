@@ -3,6 +3,7 @@ import { generateExercise } from './exerciseGenerator';
 interface ExpressionGameQuestion {
   gameId: string;
   variables: string[];
+  subExpressions: string[];
   rows: string[][];
   options: string[];
 }
@@ -72,6 +73,7 @@ export function generateExpressionQuestion(): ExpressionGameQuestion {
   return {
     gameId,
     variables: correct.variables,
+    subExpressions: correct.subExpressions,
     rows: correct.rows,
     options: shuffled,
   };

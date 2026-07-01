@@ -9,6 +9,7 @@ import '../styles/global.css';
 interface Question {
   gameId: string;
   variables: string[];
+  subExpressions: string[];
   rows: string[][];
   options: string[];
 }
@@ -28,6 +29,7 @@ export default function CompleteExpressionScreen() {
     setQuestion({
       gameId: q.gameId,
       variables: q.variables,
+      subExpressions: q.subExpressions,
       rows: q.rows,
       options: q.options,
     });
@@ -95,22 +97,41 @@ export default function CompleteExpressionScreen() {
         <table className="truth-table">
           <thead>
             <tr>
-              {question.variables.map((v, i) => (
-                <th key={i}>{v}</th>
+              {question.variables.map((v) => (
+                <th key={v} className="truth-th-var">{v}</th>
               ))}
-              <th>Resultado</th>
+              {question.subExpressions.map((_, i) => (
+                <th key={i} className={i === question.subExpressions.length - 1 ? 'truth-th-result' : 'truth-th-sub'}>
+                  E{i + 1}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {question.rows.map((row, ri) => (
-              <tr key={ri}>
-                {row.map((cell, ci) => (
-                  <td key={ci}>{cell}</td>
-                ))}
+              <tr key={ri} className={ri % 2 === 0 ? 'truth-row-even' : 'truth-row-odd'}>
+                {row.map((cell, ci) => {
+                  const isVar = ci < question.variables.length;
+                  const isResult = ci === row.length - 1;
+                  return (
+                    <td key={ci} className={isVar ? 'truth-td-var' : isResult ? 'truth-td-result' : 'truth-td-sub'}>
+                      {cell}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="truth-legend" style={{ marginBottom: 16 }}>
+        {question.subExpressions.map((expr, i) => (
+          <div key={i} className={i === question.subExpressions.length - 1 ? 'truth-legend-last' : 'truth-legend-item'}>
+            E{i + 1} = {expr}
+            {i === question.subExpressions.length - 1 ? '  ← resultado' : ''}
+          </div>
+        ))}
       </div>
 
       <div className="button-group">
