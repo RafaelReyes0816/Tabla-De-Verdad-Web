@@ -1,32 +1,31 @@
-# React + TypeScript + Vite
+# Tablas de Verdad — Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Versión web del juego de competencia de tablas de verdad.
 
-Currently, two official plugins are available:
+## Variables de entorno
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+VITE_SUPABASE_URL=https://vexsfodfuqsjzorxmpwl.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZleHNmb2RmdXFzanpvcnhtcHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI3OTA4OTUsImV4cCI6MjA5ODM2Njg5NX0.6iXTWGzu9-3COGuuQTRvYJUPWHK_8v4giJF3JUUZdKk
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+> ⚠️ Copiar en el dashboard de Vercel (Settings → Environment Variables) o en un archivo `.env` local.
+
+## Desarrollo
+
+```bash
+pnpm install
+pnpm dev
+```
+
+## Build
+
+```bash
+pnpm build   # → dist/
+```
+
+## Stack
+
+- Vite + React + TypeScript
+- React Router DOM v7
+- Supabase JS client
