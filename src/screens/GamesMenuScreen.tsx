@@ -15,7 +15,12 @@ export default function GamesMenuScreen() {
     if (!teamName) {
       navigate(`/play?mode=${mode}`);
     } else {
-      navigate(`/game?mode=${mode}&teamName=${encodeURIComponent(teamName)}`);
+      const routeMap: Record<string, string> = {
+        standard: `/game?teamName=${encodeURIComponent(teamName)}`,
+        quick: `/quick-game?teamName=${encodeURIComponent(teamName)}`,
+        expression: `/complete-expression?teamName=${encodeURIComponent(teamName)}`,
+      };
+      navigate(routeMap[mode]);
     }
   };
 

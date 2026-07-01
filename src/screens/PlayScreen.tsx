@@ -21,7 +21,12 @@ export default function PlayScreen() {
       return;
     }
     localStorage.setItem('teamName', name.trim());
-    navigate('/games-menu');
+    const routeMap: Record<string, string> = {
+      standard: '/game',
+      quick: '/quick-game',
+      expression: '/complete-expression',
+    };
+    navigate(`${routeMap[mode]}?teamName=${encodeURIComponent(name.trim())}`);
   };
 
   return (
